@@ -1,0 +1,94 @@
+@mixin centras {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.app-wrapper {
+	// margin-left: 3.4em;
+	color: white;
+	background: gold;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#drum-machine {
+	border: 2em solid white;
+	min-width: 600px;
+	padding: 2em 0 2em 2em;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 4em 1fr 1fr;
+	grid-template-areas: 'a a a c b b';
+
+	.pad-bank {
+		grid-area: a;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 2px;
+		.drum-pad {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid white;
+			padding: 1em;
+			cursor: pointer;
+		}
+	}
+	.volume-wrapper {
+		grid-area: c;
+		@include centras();
+		border: 1px solid white;
+		height: 100%;
+		width: 2em;
+		place-self: center;
+		padding: 2em 0;
+		input {
+			transform: rotate(-90deg);
+		}
+	}
+	#display {
+		//border: 1px solid white;
+		margin-left: 2px;
+		grid-area: b;
+		display: grid;
+		grid-gap: 2px;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 2em 1fr;
+		align-content: flex-start;
+		justify-content: stretch;
+		.effect,
+		.power {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			cursor: pointer;
+			//border: 1px solid white;
+			& > * {
+				margin-right: 2em;
+			}
+		}
+		.info-wrapper {
+			background: white;
+			color: black;
+			@include centras();
+		}
+		.kva-wrapper {
+			border: 1px solid white;
+			width: 50%;
+			height: 2em;
+			background: white;
+			.kva {
+				width: 50%;
+				height: 2em;
+			}
+		}
+	}
+}
